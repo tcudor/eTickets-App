@@ -1,0 +1,47 @@
+﻿@model Actor
+
+@{
+    ViewData["Title"] = "Delete a actor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Delete confirmation for @Model.FirstName @Model.LastName</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="form-group">
+                    <img class="rounded-circle" src="@Model.ProfilePictureUrl" alt="@Model.FirstName" style="max-width:150px" />
+                </div>
+                <div class="form-group">
+                    @Html.DisplayFor(modelItem=>Model.FirstName)
+                </div>
+                <div class="form-group">
+                    @Html.DisplayFor(modelItem=>Model.LastName)
+                </div>
+                <div class="form-group">
+                    @Html.DisplayFor(modelItem=>Model.Bio)
+                </div>
+
+                <div class="form-group">
+                    <form asp-action="Delete" >
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Confirm" class="btn btn-danger float-right" />
+                    </form>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#ProfilePictureURL").val();
+        })
+    </script>
+}

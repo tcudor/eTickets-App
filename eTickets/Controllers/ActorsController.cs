@@ -29,8 +29,8 @@ namespace eTickets.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([Bind("ProfilePictureUrl,FirstName,LastName,Bio")] Actor actor)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            
+            //var errors = ModelState.Values.SelectMany(v => v.Errors);
+
             if (!ModelState.IsValid)
             {
                 return View(actor);
@@ -43,8 +43,50 @@ namespace eTickets.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("Details");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if (actorDetails == null) return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProfilePictureUrl,FirstName,LastName,Bio")] Actor actor)
+        {
+            //var errors = ModelState.Values.SelectMany(v => v.Errors);
+
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            await _service.UpdateAsync(id, actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if (actorDetails == null) return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if (actorDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);         
+            return RedirectToAction(nameof(Index));
         }
     }
 }
