@@ -1,7 +1,7 @@
-﻿@model Actor
+﻿@model Producer
 
 @{
-    ViewData["Title"] = "Details actor";
+    ViewData["Title"] = "Details Producer";
 }
 
 <div class="row text">
@@ -11,9 +11,9 @@
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                
+
                 <div class="form-group">
-                   <img class="rounded-circle" src="@Model.ProfilePictureUrl" alt="@Model.FirstName" style="max-width:150px"/>         
+                    <img class="rounded-circle" src="@Model.ProfilePictureUrl" alt="@Model.FirstName" style="max-width:150px" />
                 </div>
                 <div class="form-group">
                     @Html.DisplayFor(modelItem=>Model.FirstName)
