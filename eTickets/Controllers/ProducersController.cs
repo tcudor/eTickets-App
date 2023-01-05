@@ -44,5 +44,46 @@ namespace eTickets.Controllers
             await _service.AddAsync(producer);
             return RedirectToAction(nameof(Index));
         }
+
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var producerDetails = await _service.GetByIdAsync(id);
+
+            if (producerDetails == null) return View("NotFound");
+            return View(producerDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProfilePictureUrl,FirstName,LastName,Bio")] Producer producer)
+        {
+            //var errors = ModelState.Values.SelectMany(v => v.Errors);
+
+            if (!ModelState.IsValid)
+            {
+                return View(producer);
+            }
+            await _service.UpdateAsync(id, producer);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var producerDetails = await _service.GetByIdAsync(id);
+
+            if (producerDetails == null) return View("NotFound");
+            return View(producerDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var producerDetails = await _service.GetByIdAsync(id);
+
+            if (producerDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
