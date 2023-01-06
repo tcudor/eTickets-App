@@ -1,4 +1,4 @@
-﻿using eTickets.Data.Enums;
+﻿using eTickets.Data;
 //using eTickets.Data.Static;
 using eTickets.Models;
 using Microsoft.AspNetCore.Builder;
