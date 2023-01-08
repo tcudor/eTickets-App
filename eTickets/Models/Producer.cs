@@ -28,6 +28,8 @@ namespace eTickets.Models
         [Required()]
         public string? Bio { get; set; }
 
+        public string? FullName { get { return this.FirstName + " " + this.LastName; } }
+
 
         //Relationships
         public List<Movie>? Movies { get; set; }

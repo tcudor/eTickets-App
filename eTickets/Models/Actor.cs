@@ -24,7 +24,9 @@ namespace eTickets.Models
         [Required()]
         public string? Bio { get; set; }
 
-       // Relationships
+        public string? FullName { get { return this.FirstName + " " + this.LastName; } }
+
+        // Relationships
         public List<Actor_Movie>? Actors_Movies { get; set; }
     }
 }
