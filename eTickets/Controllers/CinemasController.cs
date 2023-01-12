@@ -25,7 +25,7 @@ namespace eTickets.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Cinema cinema)
+        public async Task<IActionResult> Create([Bind("Logo,Name,Description")] Cinema cinema)
         {
             //var errors = ModelState.Values.SelectMany(v => v.Errors);
 
