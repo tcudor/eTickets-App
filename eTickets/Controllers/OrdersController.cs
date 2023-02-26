@@ -51,9 +51,6 @@ namespace eTickets.Controllers
             return RedirectToAction(nameof(ShoppingCart));
         }
 
-
-        
-
       
         public async Task<IActionResult> CompleteOrder()
         {
@@ -65,6 +62,14 @@ namespace eTickets.Controllers
             await _shoppingCart.ClearShoppingCartAsync();
 
             return View("OrderCompleted");
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            string userId = "";
+
+            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
+            return View(orders);
         }
     }
 }

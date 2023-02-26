@@ -24,35 +24,28 @@ namespace eTickets.Data.Services
 
         public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAddress)
         {
-            var order = new Order()
-            {
-                Username = userId,
-                Email = userEmailAddress
-            };
-            await _context.Orders.AddAsync(order);
-            await _context.SaveChangesAsync();
-
-            foreach (var item in items)
-            {
-                var orderItem = new OrderItem()
+                var order = new Order()
                 {
-                    Amount = item.Amount,
-                    MovieId = item.Movie.Id,
-                    Id = order.Id,
-                    Price = item.Movie.Price
+                    Username = userId,
+                    Email = userEmailAddress
                 };
+                await _context.Orders.AddAsync(order);
+                await _context.SaveChangesAsync();
+
+                foreach (var item in items)
+                {
+                    var orderItem = new OrderItem()
+                    {
+                        Amount = item.Amount,
+                        MovieId = item.Movie.Id,
+                        OrderId = order.Id,
+                        Price = item.Movie.Price
+                    };
 
  
-                await _context.OrderItems.AddAsync(orderItem);
-               
-
-            }
-            using (var transaction = _context.Database.BeginTransaction())
-            {
-                await _context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT OrderItems ON");
+                    await _context.OrderItems.AddAsync(orderItem);             
+                }
                 await _context.SaveChangesAsync();
-                transaction.Commit();
             }
         }
     }
-}
