@@ -71,7 +71,7 @@ namespace eTickets.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItems",
+                name: "OrderMovies",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -83,35 +83,35 @@ namespace eTickets.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.PrimaryKey("PK_OrderMovies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Movies_MovieId",
+                        name: "FK_OrderMovies_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Orders_OrderId",
+                        name: "FK_OrderMovies_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_MovieId",
-                table: "OrderItems",
+                name: "IX_OrderMovies_MovieId",
+                table: "OrderMovies",
                 column: "MovieId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId",
-                table: "OrderItems",
+                name: "IX_OrderMovies_OrderId",
+                table: "OrderMovies",
                 column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderItems");
+                name: "OrderMovies");
 
             migrationBuilder.DropTable(
                 name: "Orders");

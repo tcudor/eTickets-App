@@ -1,4 +1,4 @@
-﻿@model List<Order>
+﻿@model List<OrderEShop>
 
 @{
     ViewData["Title"] = "All orders";
@@ -26,18 +26,18 @@
                         <td class="align-middle">@order.Id</td>
                         <td class="align-middle">
                             <ul style="list-style-type:none">
-                                @foreach (var item in order.OrderMovies)
+                                @foreach (var item in order.OrderItems)
                                 {
                                     <li>
                                         <div class="alert alert-info" role="alert">
-                                            <span class="badge bg-success">@item.Amount</span> [@item.Price.ToString("c")] - @item.Movie.Name
+                                            <span class="badge bg-success">@item.Amount</span> [@item.Price.ToString("c")] - @item.Item.Name
                                         </div>
                                     </li>
                                 }
                             </ul>
                         </td>
                         <td class="align-middle">
-                            @order.OrderMovies.Select(m => m.Movie.Price * m.Amount).Sum().ToString("c")
+                            @order.OrderItems.Select(m => m.Item.Price * m.Amount).Sum().ToString("c")
                         </td>
                         <td class="align-middle"> - </td>
                     </tr>

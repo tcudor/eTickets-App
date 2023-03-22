@@ -3,18 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eTickets.Data.ViewComponents
 {
-     
-    public class ShoppingCartSummary:ViewComponent
+
+    public class ShoppingCartItemSummary : ViewComponent
     {
-        private readonly ShoppingCart _shoppingCart;
-        public ShoppingCartSummary(ShoppingCart shoppingCart)
+        private readonly ShoppingCartItem _shoppingCart;
+        public ShoppingCartItemSummary(ShoppingCartItem shoppingCart)
         {
             _shoppingCart = shoppingCart;
         }
 
         public IViewComponentResult Invoke()
         {
-            var items=_shoppingCart.GetShoppingCartItems();
+            var items = _shoppingCart.GetShoppingCartItems();
             return View(items.Count);
         }
     }

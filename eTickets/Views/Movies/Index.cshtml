@@ -3,11 +3,15 @@
 @{
     ViewData["Title"] = "List of Movies";
 }
+<body style="background-color:black">
+</body>
 
-<div class="row">
+<img src="https://www.cinemacity.ro/static/dam/jcr:7a062e8e-aeb1-465d-b804-858f411cd37c" alt="Top Image" class="center">
+<br /><br />
+<div class="row" style="margin-left:4%">
     @foreach(var item in Model)
     {
-        <div class="col-md-4 col-xs-6 border-primary mb-3 ">
+        <div class="col-md-4 col-xs-6 border-primary mb-3" >
             <div class="card mb-3" style="max-width: 480px;">
                 <div class="row g-0">
                     <div class="col-md-12">
@@ -67,4 +71,13 @@
     }
 </div>
 
-@await Html.PartialAsync("_CreateItem","Movies");
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+</style>
+
+@await Html.PartialAsync("_CreateItem","Movies")

@@ -2,12 +2,12 @@
 
 namespace eTickets.Models
 {
-    public class ShoppingCartItem
+    public class ShoppingCartMovie
     {
         [Key]
         public int Id { get; set; }
 
-        public Item? Item { get; set; }
+        public Movie? Movie { get; set; }
         public int Amount { get; set; }
         public string? ShoppingCartId { get; set; }
 

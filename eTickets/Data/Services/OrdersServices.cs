@@ -18,11 +18,11 @@ namespace eTickets.Data.Services
 
         public async Task<List<Order>> GetOrdersByUserIdAsync(string userId)
         {
-            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Where(n => n.Username == userId).ToListAsync();
+            var orders = await _context.Orders.Include(n => n.OrderMovies).ThenInclude(n => n.Movie).Where(n => n.Username == userId).ToListAsync();
             return orders;
         }
 
-        public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAddress)
+        public async Task StoreOrderAsync(List<ShoppingCartMovie> items, string userId, string userEmailAddress)
         {
                 var order = new Order()
                 {
@@ -34,7 +34,7 @@ namespace eTickets.Data.Services
 
                 foreach (var item in items)
                 {
-                    var orderItem = new OrderItem()
+                    var OrderMovie = new OrderMovie()
                     {
                         Amount = item.Amount,
                         MovieId = item.Movie.Id,
@@ -43,7 +43,7 @@ namespace eTickets.Data.Services
                     };
 
  
-                    await _context.OrderItems.AddAsync(orderItem);             
+                    await _context.OrderMovies.AddAsync(OrderMovie);             
                 }
                 await _context.SaveChangesAsync();
             }

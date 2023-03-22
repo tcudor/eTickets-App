@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - eTickets</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
-<body style="background-image:url('../26105.jpg')">
+<body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:lightcyan">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:orangered">
             <div class="container-fluid">
+                
                 <a class="navbar-brand" asp-controller="Movies" asp-action="Index">eTickets</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -20,36 +22,46 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index"><i class="bi bi-film"></i> Movies</a>
+                            <a class="nav-link" asp-area="" asp-controller="Movies" asp-action="Index"><i class="bi bi-film"></i> <b>Movies</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Items" asp-action="Home"><i class="bi bi-fire"></i><b>eShop</b></a>
                         </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="bi bi-gear"></i> Management
+                                    <i class="bi bi-gear"></i> <b>Management</b>
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
                                         <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
                                         <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
+                                        <a class="dropdown-item" asp-controller="Items" asp-action="Index"><i class="bi bi-cart"></i> Items</a>
                                     </div>
                                 </li>
                         
                         
                     </ul>
 
-                    <form asp-controller="Movies" asp-action="Filter" style="padding-right: 25px">
+
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Search" style="padding-right: 25px;">
                         <div class="d-flex my-2 my-lg-0">
                             <input name="searchString" type="text" class="form-control" placeholder="Search for a movie..." aria-label="Recipient's username" aria-describedby="button-addon2">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
-                        </div>
-                        
+                        </div>                        
                     </form>
+
+                   
+
                     <ul class="navbar-nav">
-                        @await Component.InvokeAsync("ShoppingCartSummary")
+                        @await Component.InvokeAsync("ShoppingCartMovieSummary")
+                    </ul>
+                    <ul class="navbar-nav">
+                        @await Component.InvokeAsync("ShoppingCartItemSummary")
                     </ul>
 
                 <div class="dropdown">
-                    <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown"
+                    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown"
                             aria-expanded="false">
                         <i class="bi bi-person-badge"></i> Hello User
                     </button>
@@ -83,5 +95,13 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
+
+<style>
+    a:hover {
+    color: white;
+    background-color:white; 
+}
+</style>
 
 </html>

@@ -12,8 +12,8 @@ using eTickets.Data;
 namespace eTickets.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230117135909_ShoppingCartMovies_added")]
-    partial class ShoppingCartMovies_added
+    [Migration("20230311115030_Items")]
+    partial class Items
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,6 +88,31 @@ namespace eTickets.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cinemas");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("eTickets.Models.Movie", b =>
@@ -167,7 +192,7 @@ namespace eTickets.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
@@ -281,11 +306,15 @@ namespace eTickets.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eTickets.Models.Order", null)
+                    b.HasOne("eTickets.Models.Order", "Order")
                         .WithMany("OrderMovies")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Movie");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("eTickets.Models.ShoppingCartMovie", b =>

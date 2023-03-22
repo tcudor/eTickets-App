@@ -153,7 +153,7 @@ namespace eTickets.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("eTickets.Models.OrderItem", b =>
+            modelBuilder.Entity("eTickets.Models.OrderMovie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -179,7 +179,7 @@ namespace eTickets.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderMovies");
                 });
 
             modelBuilder.Entity("eTickets.Models.Producer", b =>
@@ -249,7 +249,7 @@ namespace eTickets.Migrations
                     b.Navigation("Producer");
                 });
 
-            modelBuilder.Entity("eTickets.Models.OrderItem", b =>
+            modelBuilder.Entity("eTickets.Models.OrderMovie", b =>
                 {
                     b.HasOne("eTickets.Models.Movie", "Movie")
                         .WithMany()
@@ -258,7 +258,7 @@ namespace eTickets.Migrations
                         .IsRequired();
 
                     b.HasOne("eTickets.Models.Order", null)
-                        .WithMany("OrderItems")
+                        .WithMany("OrderMovies")
                         .HasForeignKey("OrderId");
 
                     b.Navigation("Movie");
@@ -281,7 +281,7 @@ namespace eTickets.Migrations
 
             modelBuilder.Entity("eTickets.Models.Order", b =>
                 {
-                    b.Navigation("OrderItems");
+                    b.Navigation("OrderMovies");
                 });
 
             modelBuilder.Entity("eTickets.Models.Producer", b =>

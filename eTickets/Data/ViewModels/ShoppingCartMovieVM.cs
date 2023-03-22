@@ -2,9 +2,9 @@
 
 namespace eTickets.Data.ViewModels
 {
-    public class ShoppingCartVM
+    public class ShoppingCartMovieVM
     {
-        public ShoppingCart? ShoppingCart { get; set; }
+        public ShoppingCartMovie? ShoppingCartMovie { get; set; }
         public double? ShoppingCartTotal { get; set; }
     }
 }

@@ -8,33 +8,33 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace eTickets.Controllers
 {
-    public class OrdersController : Controller
+    public class OrdersEShopController : Controller
     {
-        private readonly IMoviesService _moviesService;
-        private readonly ShoppingCartMovie _shoppingCart;
-        private readonly IOrdersService _ordersService;
+        private readonly IItemsService _itemsService;
+        private readonly ShoppingCartItem _shoppingCart;
+        private readonly IOrdersEShopService _ordersEShopService;
 
-        public OrdersController(IMoviesService moviesService, ShoppingCartMovie shoppingCart, IOrdersService ordersService)
+        public OrdersEShopController(IItemsService itemsService, ShoppingCartItem shoppingCart, IOrdersEShopService ordersService)
         {
-            _moviesService = moviesService;
+            _itemsService = itemsService;
             _shoppingCart = shoppingCart;
-            _ordersService = ordersService;
+            _ordersEShopService = ordersService;
         }
 
         public IActionResult ShoppingCart()
         {
-            var items = _shoppingCart.GetShoppingCartMovies();
-            _shoppingCart.ShoppingCartMovies = items;
-            var response = new ShoppingCartMovieVM()
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = items;
+            var response = new ShoppingCartItemVM()
             {
-                ShoppingCartMovie = _shoppingCart,
+                ShoppingCartItem = _shoppingCart,
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
             };
             return View(response);
         }
         public async Task<IActionResult> AddItemShoppingCart(int id)
         {
-            var item = await _moviesService.GetMovieByIdAsync(id);
+            var item = await _itemsService.GetByIdAsync(id);
             if (item != null)
             {
                 _shoppingCart.AddItemToCart(item);
@@ -43,7 +43,7 @@ namespace eTickets.Controllers
         }
         public async Task<IActionResult> RemoveItemShoppingCart(int id)
         {
-            var item = await _moviesService.GetMovieByIdAsync(id);
+            var item = await _itemsService.GetByIdAsync(id);
             if (item != null)
             {
                 _shoppingCart.RemoveItemFromCart(item);
@@ -51,14 +51,14 @@ namespace eTickets.Controllers
             return RedirectToAction(nameof(ShoppingCart));
         }
 
-      
+
         public async Task<IActionResult> CompleteOrder()
         {
-            var items = _shoppingCart.GetShoppingCartMovies();
+            var items = _shoppingCart.GetShoppingCartItems();
             string userId = "";
             string userEmailAddress = "";
 
-            await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
+            await _ordersEShopService.StoreOrderAsync(items, userId, userEmailAddress);
             await _shoppingCart.ClearShoppingCartAsync();
 
             return View("OrderCompleted");
@@ -68,7 +68,7 @@ namespace eTickets.Controllers
         {
             string userId = "";
 
-            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
+            var orders = await _ordersEShopService.GetOrdersByUserIdAsync(userId);
             return View(orders);
         }
     }

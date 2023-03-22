@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Item>
+
+@{
+    ViewData["Title"] = "List of Items";
+}
+
+<div class="container">
+  <div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img src="@product.PictureUrl" class="card-img-top" width="200" height="450" alt="Product Image">
+            <div class="card-body">
+              <h5 class="card-title">@product.Name</h5>
+                        @if (product.Description.Length >= 30)
+                        {
+                            <p class="card-text">@product.Description.Substring(0,30) ...</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">@product.Description</p>
+                        }
+                        <div class="col-md-12">
+                            <div class="card-footer ">
+                                          <div class="card-text row">
+                                              <div class="col-5">
+                                        <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@product.Id"> <i class="bi bi-eye-fill"></i> Show Details</a>
+                                                </div>
+                                              <div class="col-7 text-end">
+                                        <a class="btn btn-success text-white" asp-controller="OrdersEShop" asp-action="AddItemShoppingCart" asp-route-id="@product.Id"><i class="bi bi-cart-plus"></i> Add to Cart(Price @product.Price.ToString("c") RON)</a>
+                                            </div>
+                                      </div>
+                                </div>
+                          </div>
+            </div>
+          </div>
+        </div>
+    }
+  </div>
+</div>
