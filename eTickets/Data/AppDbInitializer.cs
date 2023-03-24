@@ -1,5 +1,5 @@
 ﻿using eTickets.Data;
-//using eTickets.Data.Static;
+using eTickets.Data.Static;
 using eTickets.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -331,7 +331,6 @@ namespace eTickets.Data
             }
 
         }
-        /*
         public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
@@ -381,5 +380,5 @@ namespace eTickets.Data
                 }
             }
         }
-    */}
+    }
 }
