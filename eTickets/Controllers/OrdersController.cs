@@ -32,6 +32,31 @@ namespace eTickets.Controllers
             };
             return View(response);
         }
+
+        //public IActionResult ShoppingCartCupon()
+        //{
+        //    var items = _shoppingCart.GetShoppingCartMovies();
+        //    _shoppingCart.ShoppingCartMovies = items;
+        //    var response = new ShoppingCartMovieVM()
+        //    {
+        //        ShoppingCartMovie = _shoppingCart,
+        //        ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal() / 1.1
+        //    };
+        //    return View(response);
+        //}
+
+        //public IActionResult Cupon()
+        //{
+        //    string primit_ca_parametru = "10%";
+        //    string s = "10%";
+        //    if (primit_ca_parametru == s)
+        //    {
+        //        return RedirectToAction(nameof(ShoppingCartCupon));
+        //    }
+        //    return RedirectToAction(nameof(ShoppingCart));
+
+        //}
+
         public async Task<IActionResult> AddItemShoppingCart(int id)
         {
             var item = await _moviesService.GetMovieByIdAsync(id);
