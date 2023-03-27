@@ -13,8 +13,10 @@ namespace eTickets.Models
         
         public int Id { get; set; }
 
-        public string Email { get; set; }
-        public string Username { get; set; }
+        public string? Email { get; set; }
+        public string? Username { get; set; }
+        [ForeignKey(nameof(Username))]
+        public ApplicationUser User { get; set; }
 
 
         public List<OrderMovie> OrderMovies { get; set; }

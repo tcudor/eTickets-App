@@ -1,83 +1,203 @@
-﻿@model IEnumerable<Movie>
+﻿
+@model IEnumerable<Movie>
 
 @{
     ViewData["Title"] = "List of Movies";
 }
+
+
 <body style="background-color:black">
 </body>
+<div class="container2">
+    <img src="https://i.gifer.com/XjRw.gif" alt="Top Left Image">
+    <img src="https://www.cinemacity.ro/static/dam/jcr:7a062e8e-aeb1-465d-b804-858f411cd37c" alt="Top Image">
+    <img src="data:image/jpeg;base64,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">
 
-<img src="https://www.cinemacity.ro/static/dam/jcr:7a062e8e-aeb1-465d-b804-858f411cd37c" alt="Top Image" class="center">
-<br /><br />
-<div class="row" style="margin-left:4%">
-    @foreach(var item in Model)
-    {
-        <div class="col-md-4 col-xs-6 border-primary mb-3" >
-            <div class="card mb-3" style="max-width: 480px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @item.Name
-                                    <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
-                                </h5>
-                             </p>
+</div>
 
+<br />
+<br />
+<div class="row">
+    <h1 class="badge bg-success text-white" style="height:5vh; font-size:30px">UPCOMING</h1>
+</div>
+<div class="row" style="margin-left:50px">
+    <div class="col-md-1 d-flex align-items-center">
+        <button id="scroll-left" class="btn btn-outline-secondary"><i class="bi bi-chevron-left"></i></button>
+    </div>
+    <div class="col-md-10">
+        <div id="movie-container" class="d-flex flex-nowrap overflow-hidden">
+            @foreach (var item in Model)
+            {
+                @if (DateTime.Now < item.StartDate)
+                {
+                    <div class="col-md-3 col-sm-4 mb-4">
+                        <div class="card" style="width:300px">
+                            <img src="@item.ImageURL" class="card-img-top" alt="@item.Name">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Name</h5>
+                                @if (item.Description.Length >= 30)
+                                {
+                                    <p class="card-text">@item.Description.Substring(0,30) ...</p>
+                                }
+                                else
+                                {
+                                    <p class="card-text">@item.Description</p>
+                                }
+                                <p class="card-text"><b>Release Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"> <i class="bi bi-eye-fill"></i> Show Details</a>
+                            </div>
                         </div>
                     </div>
-                  <div class="col-md-6">
-                       <img src="@item.ImageURL" width="200" height="310" alt="@item.Name">
-                  </div>
-                  <div class="col-md-6">
-                      <div class="card-body">
-                            <p class="card-text">@item.Description</p>
-                            <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
-                            <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
-                            <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
-                            <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
-                            <p class="card-text ">
-                                <b>Status:
-                                    @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
-                                    {
-                                        <span class="badge bg-success text-white">AVAILABLE</span>
-                                    }
-                                    else if (DateTime.Now > item.EndDate)
-                                    {
-                                        <span class="badge bg-danger text-white">EXPIRED</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-primary text-white">UPCOMING</span>
-                                    }
-                                </b>
-                            </p>
-                      </div>
-                  </div>
-                    <div class="col-md-12">
-                        <div class="card-footer ">
-                            <div class="card-text row">
-                                <div class="col-5">
-                                    <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"> <i class="bi bi-eye-fill"></i> Show Details</a>
-                                </div>
-                                <div class="col-7 text-end">
-                                    <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Add to Cart(Price @item.Price.ToString("c") RON)</a>
+                }
+            }
+        </div>
+    </div>
+    <div class="col-md-1 d-flex align-items-center">
+        <button id="scroll-right" class="btn btn-outline-secondary"><i class="bi bi-chevron-right"></i></button>
+    </div>
+</div>
+
+
+<script>
+    const container = document.getElementById("movie-container");
+    const scrollLeftButton = document.getElementById("scroll-left");
+    const scrollRightButton = document.getElementById("scroll-right");
+
+    // calculate the width of a single movie card
+    const cardWidth = document.querySelector(".card").offsetWidth;
+
+    // calculate the width of the container based on the number of movies to show
+    const containerWidth = cardWidth * 5;
+
+    // set the width of the container to prevent the movies from wrapping
+    container.style.width = containerWidth + "px";
+
+    // add event listeners to scroll the container left and right
+    scrollLeftButton.addEventListener("click", () => {
+        container.scrollBy({
+            left: -cardWidth * 2,
+            behavior: "smooth",
+        });
+    });
+
+    scrollRightButton.addEventListener("click", () => {
+        container.scrollBy({
+            left: cardWidth * 2,
+            behavior: "smooth",
+        });
+    });
+
+</script>
+
+
+
+<div class="row">
+    <h1 class="badge bg-info text-white" style="height:5vh; font-size:30px">AVAILABLE NOW</h1>
+    @foreach (var item in Model)
+    {
+        @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+        {
+            <div class="col-md-4 col-xs-6 border-primary mb-3">
+                <div class="card mb-3" style="max-width: 480px;">
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="card-header text-white bg-info">
+                                <p class="card-text">
+                                    <h5 class="card-title">
+                                        @item.Name
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                            <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                        }
+                                    </h5>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="@item.ImageURL" width="200" height="310" alt="@item.Name">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <p class="card-text">@item.Description</p>
+                                <p class="card-text"><b>Cinema: </b>@item.Cinema.Name</p>
+                                <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
+                                <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
+                                <p class="card-text ">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card-footer ">
+                                <div class="card-text row">
+                                    <div class="col-5">
+                                        <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"> <i class="bi bi-eye-fill"></i> Show Details</a>
+                                    </div>
+                                    <div class="col-7 text-end">
+                                        <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Add to Cart(Price @item.Price.ToString("c") RON)</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     }
+
 </div>
 
-<style>
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
-</style>
 
-@await Html.PartialAsync("_CreateItem","Movies")
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        /* Set the maximum width of the images */
+        img1 {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Set the width of the container to fit the screen */
+        .container2 {
+            height: 40vh;
+            max-height: 100%;
+            width: 100%;
+            max-width: 100%; /* You can adjust this value to fit your needs */
+            margin: 0 auto; /* Center the container */
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            align-items: stretch;
+        }
+
+            /* Set the width of each image */
+            .container2 img {
+                height: 100%; /* Make the height of the image 100% of the container height */
+                object-fit: scale-down; /* Scale the image to fill the container */
+                width: 33%; /* You can adjust this value to fit your needs */
+                margin: 10px; /* Add some margin between the images */
+            }
+
+        #movie-container {
+            scroll-behavior: smooth;
+        }
+
+        .card {
+            width: 100%;
+        }
+        
+    </style>
+
+
+
+
+
+
+
+    @await Html.PartialAsync("_CreateItem","Movies")

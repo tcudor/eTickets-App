@@ -20,6 +20,12 @@ namespace eTickets.Controllers
             return View(allMovies);
         }
 
+        public async Task<IActionResult> Spinner()
+        {
+            var allMovies = await _service.GetAllAsync(n => n.Cinema);
+            return View(allMovies);
+        }
+
         public async Task<IActionResult> Search(string searchString)
         {
             var allMovies = await _service.GetAllAsync(n => n.Cinema);

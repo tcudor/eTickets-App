@@ -4,6 +4,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using eTickets.Data.Base;
 using eTickets.Data;
+using System.Text.Json.Serialization;
 
 namespace eTickets.Models
 {
@@ -32,11 +33,15 @@ namespace eTickets.Models
         //Cinema
         [ForeignKey("CinemaId")]
         public int CinemaId { get; set; }
+
+        [JsonIgnore]
         public Cinema? Cinema { get; set; }
 
         //Producer
         [ForeignKey("ProducerId")]
         public int ProducerId { get; set; }
+
+        [JsonIgnore]
         public Producer? Producer { get; set; }
 
     }

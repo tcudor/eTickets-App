@@ -4,6 +4,9 @@ using eTickets.Data.ViewModels;
 using eTickets.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
+using System.Net;
 
 namespace eTickets.Controllers
 {
@@ -18,6 +21,13 @@ namespace eTickets.Controllers
             _signInManager= signInManager;
             _context= context;
         }
+
+        public async Task<IActionResult> Users()
+        {
+            var users = await _context.Users.ToListAsync();
+            return View(users);
+        }
+
         public IActionResult Login()
         {
             var response = new LoginVM();
@@ -79,6 +89,10 @@ namespace eTickets.Controllers
             if (newUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
 
+            string toAddress = registerVM.EmailAddress;
+            string subject = "Welcome to our eCommerce website!";
+            string body = "Dear " + registerVM.FullName + ",\n\nThank you for signing up on our eCommerce website!";
+            SendEmail(toAddress, subject, body);
             return View("RegisterCompleted");
         }
 
@@ -89,6 +103,31 @@ namespace eTickets.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
+
+        public void SendEmail(string toAddress, string subject, string body)
+        {
+           
+            // Set the SMTP server details
+            SmtpClient client = new SmtpClient();
+            client.Host = "smtp.gmail.com";
+            client.Port = 587;
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential("tudorcristian.gheorghita@ulbsibiu.ro", "jqmifsfdshkupzlu");
+
+            // Create a message to send
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress("tudorcristian.gheorghita@ulbsibiu.ro");
+            message.To.Add(toAddress);
+            message.Subject = subject;
+            message.Body = body;
+
+            // Send the message
+            client.Send(message);
+        }
+
     }
+
+
 
 }
