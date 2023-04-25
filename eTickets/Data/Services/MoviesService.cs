@@ -10,7 +10,7 @@ namespace eTickets.Data.Services
         private readonly AppDbContext _context;
         public MoviesService(AppDbContext context) : base(context)
         {
-            _context = context;        
+            _context = context;
         }
 
         public async Task AddNewMovieAsync(NewMovieVM data)
@@ -46,7 +46,7 @@ namespace eTickets.Data.Services
         {
             var dbMovie = await _context.Movies.FirstOrDefaultAsync(n => n.Id == data.Id);
 
-            if(dbMovie!=null)
+            if (dbMovie != null)
             {
                 dbMovie.Name = data.Name;
                 dbMovie.Description = data.Description;
@@ -59,7 +59,7 @@ namespace eTickets.Data.Services
                 dbMovie.ProducerId = data.ProducerId;
                 await _context.SaveChangesAsync();
             };
-            var existingActorDb=_context.Actors_Movies.Where(n=>n.MovieId==data.Id).ToList();
+            var existingActorDb = _context.Actors_Movies.Where(n => n.MovieId == data.Id).ToList();
             _context.Actors_Movies.RemoveRange(existingActorDb);
             await _context.SaveChangesAsync();
 
@@ -98,6 +98,21 @@ namespace eTickets.Data.Services
             return response;
         }
 
-        
+        public async Task DeleteMovieAsync(NewMovieVM data)
+        {
+            var dbMovie = await _context.Movies.FirstOrDefaultAsync(n => n.Id == data.Id);
+
+            if (dbMovie != null)
+            {
+                _context.Movies.Remove(dbMovie);
+                await _context.SaveChangesAsync();
+            };
+            var existingActorDb = _context.Actors_Movies.Where(n => n.MovieId == data.Id).ToList();
+            _context.Actors_Movies.RemoveRange(existingActorDb);
+            await _context.SaveChangesAsync();
+
+        }
+
+
     }
 }

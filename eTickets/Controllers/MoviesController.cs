@@ -1,12 +1,15 @@
 ﻿using eTickets.Data;
 using eTickets.Data.Services;
+using eTickets.Data.Static;
 using eTickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class MoviesController : Controller
     {
         private readonly IMoviesService _service;
@@ -14,17 +17,19 @@ namespace eTickets.Controllers
         {
             _service = service;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allMovies = await _service.GetAllAsync(n=>n.Cinema);
             return View(allMovies);
         }
 
-        public async Task<IActionResult> Spinner()
+        public async Task<IActionResult> AllMovies()
         {
             var allMovies = await _service.GetAllAsync(n => n.Cinema);
             return View(allMovies);
         }
+
 
         public async Task<IActionResult> Search(string searchString)
         {
@@ -39,12 +44,13 @@ namespace eTickets.Controllers
 
             return View("Index", allMovies);
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult>Details(int id)
         {
             var movieDetails = await _service.GetMovieByIdAsync(id);
             return View(movieDetails);
         }
+
 
         public async Task<IActionResult> Create()
         {   
@@ -116,6 +122,25 @@ namespace eTickets.Controllers
 
             await _service.UpdateMovieAsync(movie);
             return RedirectToAction(nameof(Index));
+        }
+
+
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var movieDetails = await _service.GetByIdAsync(id);
+
+            if (movieDetails == null) return View("NotFound");
+            return View(movieDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> Delete(int id, NewMovieVM movie)
+        {
+            var movieDetails = await _service.GetByIdAsync(id);
+            if (id != movie.Id) return View("NotFound");
+            await _service.DeleteMovieAsync(movie);
+            return View("Control");
         }
     }
 }

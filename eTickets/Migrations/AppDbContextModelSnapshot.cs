@@ -207,9 +207,6 @@ namespace eTickets.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NrSeats")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -237,14 +234,14 @@ namespace eTickets.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Username");
 
                     b.ToTable("Orders");
                 });
@@ -258,14 +255,14 @@ namespace eTickets.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Username");
 
                     b.ToTable("OrdersEShop");
                 });
@@ -574,6 +571,24 @@ namespace eTickets.Migrations
                     b.Navigation("Cinema");
 
                     b.Navigation("Producer");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Order", b =>
+                {
+                    b.HasOne("eTickets.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("Username");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("eTickets.Models.OrderEShop", b =>
+                {
+                    b.HasOne("eTickets.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("Username");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("eTickets.Models.OrderItem", b =>

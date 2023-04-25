@@ -87,13 +87,16 @@ namespace eTickets.Controllers
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
             if (newUserResponse.Succeeded)
+            {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-
-            string toAddress = registerVM.EmailAddress;
-            string subject = "Welcome to our eCommerce website!";
-            string body = "Dear " + registerVM.FullName + ",\n\nThank you for signing up on our eCommerce website!";
-            SendEmail(toAddress, subject, body);
+                string toAddress = registerVM.EmailAddress;
+                string subject = "Welcome to our eCommerce website!";
+                string body = "Dear " + registerVM.FullName + ",\n\nThank you for signing up on our eCommerce website!";
+                SendEmail(toAddress, subject, body);
+                
+            }
             return View("RegisterCompleted");
+
         }
 
         [HttpPost]
@@ -124,6 +127,11 @@ namespace eTickets.Controllers
 
             // Send the message
             client.Send(message);
+        }
+
+        public IActionResult AccessDenied(string ReturnUrl)
+        {
+            return View();
         }
 
     }

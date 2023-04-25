@@ -13,6 +13,7 @@ namespace eTickets.Data.ViewModels
         [Required(ErrorMessage = "Email address is required")]
         public string? EmailAddress { get; set; }
 
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",ErrorMessage = "A password contains at least eight characters, including at least one number and includes both lower and uppercase letters and special characters")]
         [Required]
         [DataType(DataType.Password)]
         public string? Password { get; set; }

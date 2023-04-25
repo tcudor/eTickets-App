@@ -37,7 +37,7 @@
                             </ul>
                         </td>
                         <td class="align-middle">
-                            @order.OrderItems.Select(m => m.Item.Price * m.Amount).Sum().ToString("c")
+                            @order.OrderItems.Select(m => m.Item.Price * m.Amount).Sum().ToString("")
                         </td>
                         <td class="align-middle"> - </td>
                     </tr>

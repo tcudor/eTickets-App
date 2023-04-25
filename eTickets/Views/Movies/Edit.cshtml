@@ -7,15 +7,18 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <p>
-            <h4>Update movie</h4>
+            <h4>Update movie @Model.Name</h4>
         </p>
 
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Edit">
+                
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                    <form asp-action="Edit">
                     <div class="row">
+                        <div class="form-group text-center">
+                            <img style="max-height:600px;max-width:200px" id="Image" />
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="Name" class="control-label"></label>
@@ -74,10 +77,6 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 offset-4 text-center">
-                        <img width="100%" id="ImageURL" />
-                    </div>
-
                     <div class="form-group">
                         <input type="submit" value="Update" class="btn btn-outline-success float-right" />
                         <a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
@@ -93,14 +92,13 @@
 
 @section Scripts{
     <script>
-
         $(document).ready(function () {
-            var output = document.getElementById('ImageURL');
+            var output = document.getElementById('Image');
             output.src = $("#ImageURL").val();
         })
 
         $("#ImageURL").on("change", function () {
-            var output = document.getElementById('ImageURL');
+            var output = document.getElementById('Image');
             output.src = $(this).val();
         })
     </script>
