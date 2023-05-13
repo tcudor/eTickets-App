@@ -17,6 +17,14 @@ namespace eTickets.Controllers
         {
             _service = service;
         }
+
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Info()
+        {
+            return View("Info");
+        }
+
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -30,7 +38,7 @@ namespace eTickets.Controllers
             return View(allMovies);
         }
 
-
+        [AllowAnonymous]
         public async Task<IActionResult> Search(string searchString)
         {
             var allMovies = await _service.GetAllAsync(n => n.Cinema);
@@ -121,7 +129,7 @@ namespace eTickets.Controllers
             }
 
             await _service.UpdateMovieAsync(movie);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("AllMovies");
         }
 
 

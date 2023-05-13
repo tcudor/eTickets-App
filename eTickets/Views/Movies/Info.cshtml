@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Hartă cu pin</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Stilizarea div-ului care conține harta */
+        #map {
+            height: 500px;
+        margin-left:10%;
+        margin-right:10%;
+            
+        }
+
+        #contact {
+            width: auto;
+            height: auto;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-left:10%;
+            margin-right: 10%;
+        }
+
+            /* Stilizarea textului din div-ul de contact */
+            #contact p {
+                margin: 0 0 10px;
+            }
+    </style>
+</head>
+<body onload="initMap()">
+    <br />
+    <div id="contact">   
+        <p>Date de contact:</p>
+        <p>Telefon: 07XX XXX XXX</p>
+        <p>Email: office@ecinema.ro</p>
+        <p>Adresa: Strada Doctor Ion Rațiu 5-7, Sibiu 550012</p>
+    </div>
+
+
+    <!-- Div-ul unde va fi afișată harta -->
+    <div id="map"></div>
+
+    <!-- Script-ul pentru API-ul de hărți -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBid3FwGYOFuR-R0_Z6LhsBHmslDzZy-LE"
+            async defer></script>
+
+    <!-- Script-ul tău personalizat pentru a crea harta -->
+    <script>
+        function initMap() {
+            // Coordonatele Universității "Lucian Blaga" din Sibiu
+            var eCinema = { lat: 45.7907859, lng: 24.1434177 };
+
+            // Crearea hărții Google și setarea centrului și a nivelului de zoom
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 18,
+                center: eCinema
+            });
+
+            // Adăugarea unui marker la Universitatea "Lucian Blaga" din Sibiu
+            var marker = new google.maps.Marker({
+                position: eCinema,
+                map: map,
+                title: "eCinema"
+            });
+
+            // Crearea unei ferestre de detaliu pentru marker
+            var infowindow = new google.maps.InfoWindow({
+                content: "<h3>eCinema</h3><br>Strada Doctor Ion Rațiu 5-7<br> Sibiu 550012"
+            });
+
+            // Deschiderea ferestrei de detaliu la inițializarea hărții
+            infowindow.open(map, marker);
+        }
+    </script>
+</body>
+</html>

@@ -71,22 +71,23 @@
                 </div>
             </div>
         </nav>
-        <br />
-        <br />
-        <br />
-        <br />
+        <br /><br /><br />
     </header>
     <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-
+        
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - eTickets
+            &copy; 2023 - eTickets 
+            
+            <br />
+            <a id="info" class="btn btn-outline-light btn-dark" asp-controller="Movies" asp-action="Info"><i class="bi bi-info"></i>Contact&Info</a>
         </div>
+       
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
   
@@ -106,6 +107,12 @@
     background-color:white; 
 }
 
+    #info:hover{
+        color: black;
+        background-color: white;
+    }
+
+
     .navbar-fixed {
         position: fixed;
         top: 0;
@@ -114,6 +121,13 @@
         z-index: 9999;
         background-color:orangered
     }
+
+    body {
+        overflow-x: hidden; /* Hide scrollbars */
+    }
+
+
+
 </style>
 
 </html>

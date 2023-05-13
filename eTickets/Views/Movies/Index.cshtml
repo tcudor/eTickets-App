@@ -8,7 +8,7 @@
 
 <body style="background-color:black">
 </body>
-<div class="container2">
+<div class="container2" style="background-color:black">
 
     <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmNiZmQzMjNiNzExYzdjMjU0ZmQyZDJiYTI5ODIzNGU4ZDIxYWQzMyZjdD1n/Vw3k4Vro0Q5KE/giphy.gif">
     <img src="https://www.cinemacity.ro/static/dam/jcr:7a062e8e-aeb1-465d-b804-858f411cd37c" alt="Top Image">
@@ -17,6 +17,7 @@
 </div>
 <br />
 <br />
+
 <div class="row">
     <h1 class="badge bg-light text-black" style="height:10vh; font-size:35px">UPCOMING</h1>
 </div>
@@ -88,6 +89,16 @@
     });
 
 </script>
+<br /><br /><br />
+<div class="row">
+    <div class="col-md-6">
+    <img src="https://atlas-geografic.net/wp-content/uploads/2019/05/cinema-elvetia-2.jpg" style="margin-left:20%; height:300px; width:700px">
+    </div>
+    <div class="col-md-6">
+        <p style="font-weight:bold;font-size:30px;line-height:1.5;color:white">Luxul si comfortul de acasa acum alaturi de cele mai noi filme si de cele mai tari senzatii</p>
+    </div>
+</div>
+
 
 <div class="row">
 <h1 class="badge bg-success text-white" style="height:10vh; font-size:35px">AVAILABLE NOW</h1>
@@ -184,13 +195,33 @@
             align-items: stretch;
         }
 
-            /* Set the width of each image */
-            .container2 img {
-                height: 100%; /* Make the height of the image 100% of the container height */
-                object-fit: scale-down; /* Scale the image to fill the container */
-                width: 33%; /* You can adjust this value to fit your needs */
-                margin: 10px; /* Add some margin between the images */
-            }
+        /* Set the width of each image */
+        .container2 img {
+            height: 100%; /* Make the height of the image 100% of the container height */
+            object-fit: scale-down; /* Scale the image to fill the container */
+            width: 33%; /* You can adjust this value to fit your needs */
+            margin: 10px; /* Add some margin between the images */
+        }
+
+        container1 {
+            height: 40vh;
+            max-height: 100%;
+            width: 100%;
+            max-width: 100%; /* You can adjust this value to fit your needs */
+            margin: 0 auto; /* Center the container */
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            align-items: stretch;
+        }
+
+        container1 img{
+            height: 50%;
+            object-fit: scale-down; /* Scale the image to fill the container */
+            width: 33%; /* You can adjust this value to fit your needs */
+        }
 
         #movie-container {
             scroll-behavior: smooth;
