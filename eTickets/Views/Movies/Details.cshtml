@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Movie details";
 }
-
+<br /><br />
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="card mb-12">
@@ -25,13 +25,13 @@
                         <p class="card-text">@Model.Description</p>
                         <p class="card-text">
                             <b>Cinema: </b>
-                            <a asp-controller="Cinemas" asp-action="Details" asp-route-id="@Model.CinemaId">
+                            <a asp-controller="Cinemas" asp-action="Details" asp-route-id="@Model.CinemaId" class="text-primary">
                                 @Model.Cinema.Name
                             </a>
                         </p>
                         <p class="card-text">
                             <b>Producer: </b>
-                            <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.ProducerId">
+                            <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.ProducerId"class="text-primary">
                                 @Model.Producer.FirstName @Model.Producer.LastName
                             </a>
                         </p>
@@ -59,10 +59,10 @@
                             <div class="row">
                                 @foreach (var actor in Model.Actors_Movies)
                                 {
-                                        <div class="column text-center">
+                                        <div class="col-md-3 text-center">
                                             <img class="border-info rounded-circle" src="@actor.Actor.ProfilePictureUrl" style="max-width: 150px" />
                                             <br />
-                                            <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FirstName @actor.Actor.LastName</a>
+                                        <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId" class="text-primary">@actor.Actor.FirstName @actor.Actor.LastName</a>
                                         </div>
                                 }
                             </div>

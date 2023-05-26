@@ -16,7 +16,7 @@
         <nav class="navbar-fixed navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 
-                <a class="navbar-brand" asp-controller="Movies" asp-action="Index">eTickets</a>
+                <a class="navbar-brand" asp-controller="Movies" asp-action="Index" style="margin-left:10px">eCinema</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -65,7 +65,7 @@
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartItemSummary")
                     </ul>
-
+                    <span style="padding: 5px;"></span>
                     <partial name="_Identity.cshtml" />
                     
                 </div>
@@ -80,10 +80,10 @@
         
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="margin-top:100px">
         <div class="container">
-            &copy; 2023 - eTickets 
-            
+            &copy; 2023 - eCinema
+
             <br />
             <a id="info" class="btn btn-outline-light btn-dark" asp-controller="Movies" asp-action="Info"><i class="bi bi-info"></i>Contact&Info</a>
         </div>
