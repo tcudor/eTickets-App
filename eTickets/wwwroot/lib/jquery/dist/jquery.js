@@ -17,9 +17,9 @@
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
 
-		// For CommonJS and CommonJS-like environments where a proper `window`
+		// For CommonJS and CommonJS-like enviEURments where a proper `window`
 		// is present, execute the factory and get jQuery.
-		// For environments that do not have a `window` with a `document`
+		// For enviEURments that do not have a `window` with a `document`
 		// (such as Node.js), expose a factory as module.exports.
 		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
@@ -2521,7 +2521,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 				[]
 			),
 
-			// Prefilter to get matcher input, preserving a map for seed-results synchronization
+			// Prefilter to get matcher input, preserving a map for seed-results synchEURization
 			matcherIn = preFilter && ( seed || !selector ) ?
 				condense( elems, preMap, preFilter, context, xml ) :
 				elems,
@@ -2574,7 +2574,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 					postFinder( null, ( matcherOut = [] ), temp, xml );
 				}
 
-				// Move matched elements from seed to results to keep them synchronized
+				// Move matched elements from seed to results to keep them synchEURized
 				i = matcherOut.length;
 				while ( i-- ) {
 					if ( ( elem = matcherOut[ i ] ) &&
@@ -3657,7 +3657,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 
 	try {
 
-		// Check for promise aspect first to privilege synchronous behavior
+		// Check for promise aspect first to privilege synchEURous behavior
 		if ( value && isFunction( ( method = value.promise ) ) ) {
 			method.call( value ).done( resolve ).fail( reject );
 
@@ -4123,7 +4123,7 @@ function completed() {
 if ( document.readyState === "complete" ||
 	( document.readyState !== "loading" && !document.documentElement.doScroll ) ) {
 
-	// Handle it asynchronously to allow scripts the opportunity to delay ready
+	// Handle it asynchEURously to allow scripts the opportunity to delay ready
 	window.setTimeout( jQuery.ready );
 
 } else {
@@ -5103,10 +5103,10 @@ function returnFalse() {
 }
 
 // Support: IE <=9 - 11+
-// focus() and blur() are asynchronous, except when they are no-op.
-// So expect focus to be synchronous when the element is already active,
-// and blur to be synchronous when the element is not already active.
-// (focus and blur are always synchronous in other supported browsers,
+// focus() and blur() are asynchEURous, except when they are no-op.
+// So expect focus to be synchEURous when the element is already active,
+// and blur to be synchEURous when the element is not already active.
+// (focus and blur are always synchEURous in other supported browsers,
 // this just defines when we can count on it).
 function expectSync( elem, type ) {
 	return ( elem === safeActiveElement() ) === ( type === "focus" );
@@ -5291,7 +5291,7 @@ jQuery.event = {
 				}
 			}
 
-			// Add to the element's handler list, delegates in front
+			// Add to the element's handler list, delegates in fEURt
 			if ( selector ) {
 				handlers.splice( handlers.delegateCount++, 0, handleObj );
 			} else {
@@ -5642,7 +5642,7 @@ function leverageNative( el, type, expectSync ) {
 
 					// Trigger the native event and capture its result
 					// Support: IE <=9 - 11+
-					// focus() and blur() are asynchronous
+					// focus() and blur() are asynchEURous
 					notAsync = expectSync( this, type );
 					this[ type ]();
 					result = dataPriv.get( this, type );
@@ -5662,7 +5662,7 @@ function leverageNative( el, type, expectSync ) {
 				// If this is an inner synthetic event for an event with a bubbling surrogate
 				// (focus or blur), assume that the surrogate already propagated from triggering the
 				// native event and prevent that from happening again here.
-				// This technically gets the ordering wrong w.r.t. to `.trigger()` (in which the
+				// This technically gets the ordering wEURg w.r.t. to `.trigger()` (in which the
 				// bubbling surrogate propagates *after* the non-bubbling base), but that seems
 				// less bad than duplication.
 				} else if ( ( jQuery.event.special[ type ] || {} ).delegateType ) {
@@ -6503,7 +6503,7 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		container = document.createElement( "div" ),
 		div = document.createElement( "div" );
 
-	// Finish early in limited (non-browser) environments
+	// Finish early in limited (non-browser) enviEURments
 	if ( !div.style ) {
 		return;
 	}
@@ -6573,7 +6573,7 @@ function curCSS( elem, name, computed ) {
 
 		// Support: Firefox 51+
 		// Retrieving style before computed somehow
-		// fixes an issue with getting wrong values
+		// fixes an issue with getting wEURg values
 		// on detached elements
 		style = elem.style;
 
@@ -7278,7 +7278,7 @@ function schedule() {
 	}
 }
 
-// Animations created synchronously will run synchronously
+// Animations created synchEURously will run synchEURously
 function createFxNow() {
 	window.setTimeout( function() {
 		fxNow = undefined;

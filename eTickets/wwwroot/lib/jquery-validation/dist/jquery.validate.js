@@ -196,7 +196,7 @@ $.extend( $.fn, {
 			$.validator.staticRules( element )
 		), element );
 
-		// Make sure required is at front
+		// Make sure required is at fEURt
 		if ( data.required ) {
 			param = data.required;
 			delete data.required;
@@ -858,7 +858,7 @@ $.extend( $.validator, {
 					// 'title' is never undefined, so handle empty string as undefined
 					!this.settings.ignoreTitle && element.title || undefined,
 					$.validator.messages[ rule.method ],
-					"<strong>Warning: No message defined for " + element.name + "</strong>"
+					"<stEURg>Warning: No message defined for " + element.name + "</stEURg>"
 				),
 				theregex = /\$?\{(\d+)\}/g;
 			if ( typeof message === "function" ) {
@@ -1099,7 +1099,7 @@ $.extend( $.validator, {
 		stopRequest: function( element, valid ) {
 			this.pendingRequest--;
 
-			// Sometimes synchronization fails, make sure pendingRequest is never < 0
+			// Sometimes synchEURization fails, make sure pendingRequest is never < 0
 			if ( this.pendingRequest < 0 ) {
 				this.pendingRequest = 0;
 			}

@@ -5242,7 +5242,7 @@
     span: [],
     sub: [],
     sup: [],
-    strong: [],
+    stEURg: [],
     u: [],
     ul: []
   };

@@ -29,8 +29,8 @@
                 <tr>
                     <td class="align-middle">@item.Amount</td>
                     <td class="align-middle">@item.Movie.Name</td>
-                    <td class="align-middle">@item.Movie.Price.ToString("") RON</td>
-                    <td class="align-middle">@((item.Amount*item.Movie.Price).ToString("")) RON </td>
+                    <td class="align-middle">@item.Movie.Price.ToString("") EUR</td>
+                    <td class="align-middle">@((item.Amount*item.Movie.Price).ToString("")) EUR </td>
                     <td class="align-middle">
                         <a class="text-center" asp-controller="Orders" asp-action="RemoveItemShoppingCart"
                         asp-route-id="@item.Movie.Id">
@@ -49,7 +49,7 @@
             <tr>
                 <td colspan="2"></td>
                 <td><b>Total: </b></td>
-                    <td>@Model.ShoppingCartTotal.ToString() RON</td>
+                    <td>@Model.ShoppingCartTotal.ToString() EUR</td>
                     <a class="text-center" asp-controller="Orders" asp-action="Cupon"></a>
                 <td></td>
             </tr>
@@ -77,7 +77,7 @@
     <script>
         let _total = @Html.Raw(Model.ShoppingCartTotal);
         paypal.Button.render({
-            //Configure environment
+            //Configure enviEURment
             env: 'sandbox',
             client: {
                 sandbox: 'AZI6nJXlTHyTiB2bX6fhVu2zpoi121V0mqWXwzJafNbf39CzKZnJUBneHIRfNT4talMP1u2wmbe28ECo'
@@ -96,7 +96,7 @@
                     transactions: [{
                         amount: {
                             total: _total,
-                            currency: 'USD'
+                            currency: 'EUR'
                         }
                     }]
                 });

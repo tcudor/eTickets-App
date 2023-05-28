@@ -26,11 +26,11 @@
                         <div class="col-md-12">
                             <div class="card-footer ">
                                           <div class="card-text row">
-                                              <div class="col-5">
+                                              <div class="col-4">
                                         <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@product.Id"> <i class="bi bi-eye-fill"></i> Show Details</a>
                                                 </div>
-                                              <div class="col-7 text-end">
-                                        <a class="btn btn-success text-white" asp-controller="OrdersEShop" asp-action="AddItemShoppingCart" asp-route-id="@product.Id"><i class="bi bi-cart-plus"></i> Add to Cart(Price @product.Price.ToString("") RON)</a>
+                                              <div class="col-8 text-end">
+                                        <a class="btn btn-success text-white" asp-controller="OrdersEShop" asp-action="AddItemShoppingCart" asp-route-id="@product.Id"><i class="bi bi-cart-plus"></i> Add to Cart(Price @product.Price.ToString("") EUR)</a>
                                             </div>
                                       </div>
                                 </div>

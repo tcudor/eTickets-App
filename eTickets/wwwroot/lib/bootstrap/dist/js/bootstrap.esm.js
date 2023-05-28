@@ -3462,7 +3462,7 @@ const DefaultAllowlist = {
   span: [],
   sub: [],
   sup: [],
-  strong: [],
+  stEURg: [],
   u: [],
   ul: []
 };

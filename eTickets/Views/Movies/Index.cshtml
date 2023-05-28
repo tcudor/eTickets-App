@@ -92,18 +92,18 @@
 <br /><br /><br />
 <div class="row">
     <div class="col-md-6">
+        @* <img src="https://hotpotmedia.s3.us-east-2.amazonaws.com/8-LulKZo85RnZ0jYR.png?nc =1" style="margin-left:20%; height:300px; width:700px">*@
     <img src="https://atlas-geografic.net/wp-content/uploads/2019/05/cinema-elvetia-2.jpg" style="margin-left:20%; height:300px; width:700px">
     </div>
-    <div class="col-md-6">
-        <p style="font-weight:bold;font-size:30px;line-height:1.5;color:white">
-            Cinematograful ofera paturi confortabile si redefineste experiența vizionării filmelor,
-            oferindu-ți posibilitatea de a experimenta luxul 
-            și confortul în timp ce te lași 
-            purtat de magia cinematografiei.
-        </p>
+    <div class="col-md-5">
+       <div class="container-text">
+            <div class="text" data-text="Our cinema offers comfortable beds and redefines the movie-watching experience,
+                                        giving you the opportunity to experience luxury and comfort while being 
+                                        swept away by the magic of cinema"></div>
+       </div>
     </div>
 </div>
-
+<br />
 
 <div class="row">
 <h1 class="badge bg-success text-white" style="height:10vh; font-size:35px">AVAILABLE NOW</h1>
@@ -157,7 +157,7 @@
                                         <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"> <i class="bi bi-eye-fill"></i> Show Details</a>
                                     </div>
                                     <div class="col-7 text-end">
-                                        <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Add to Cart(Price @item.Price.ToString("") RON)</a>
+                                        <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Add to Cart(Price @item.Price.ToString("") EUR)</a>
                                     </div>
                                 </div>
                             </div>
@@ -234,6 +234,32 @@
 
         .card {
             width: 100%;
+        }
+
+        .container-text {
+            perspective: 800px;
+        }
+
+        .text {
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-15deg);
+            transition: transform 2s;
+        }
+
+        .text:hover {
+            transform: rotateY(0deg);
+        }
+
+        .text:before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 1.5;
         }
         
     </style>

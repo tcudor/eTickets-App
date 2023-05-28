@@ -20,7 +20,7 @@ namespace eTickets.Models
         [Required(ErrorMessage = "Description is required")]
         public string? Description { get; set; }
 
-        [Display(Name = "Price in RON")]
+        [Display(Name = "Price in EUR")]
         [Required(ErrorMessage = "Price is required")]
         public double Price { get; set; }
 

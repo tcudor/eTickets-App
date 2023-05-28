@@ -28,7 +28,7 @@
                     {
                         <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
                     }
-                    <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    <a id="backButton" class="btn btn-outline-secondary">Back</a>
                 </div>
             </div>
         </div>
@@ -41,5 +41,11 @@
             var output = document.getElementById('PictureUrl');
             output.src = $("#ProfilePictureUrl").val();
         })
+    </script>
+    <script>
+        document.getElementById("backButton").onclick = function () {
+            history.back();
+        };
+
     </script>
 }
