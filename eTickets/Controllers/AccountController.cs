@@ -82,7 +82,7 @@ namespace eTickets.Controllers
             {
                 FullName = registerVM.FullName,
                 Email = registerVM.EmailAddress,
-                UserName = registerVM.EmailAddress
+                UserName = GenerateUsername(registerVM.EmailAddress)
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
@@ -97,6 +97,19 @@ namespace eTickets.Controllers
             }
             return View("RegisterCompleted");
 
+        }
+
+        public static string GenerateUsername(string emailAddress)
+        {
+            int index = emailAddress.IndexOf('@');
+
+            if (index != -1)
+            {
+                string username = emailAddress.Substring(0, index);
+                return username;
+            }
+
+            return null; // În cazul în care adresa de email nu conține caracterul '@'
         }
 
         [HttpPost]
