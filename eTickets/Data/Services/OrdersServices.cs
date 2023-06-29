@@ -19,7 +19,8 @@ namespace eTickets.Data.Services
         public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
         {
             var orders = await _context.Orders.Include(n => n.OrderMovies).ThenInclude(n => n.Movie).Include(n => n.User).ToListAsync();
-            if(userRole != "Admin") {
+            if(userRole != "Admin") 
+            {
                 orders=orders.Where(n => n.Username == userId).ToList();
             }
             return orders;
