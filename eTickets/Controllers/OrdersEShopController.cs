@@ -69,7 +69,7 @@ namespace eTickets.Controllers
 
             string toAddress = userEmailAddress;
             string subject = "Order Confimation!";
-            string body = "Dear " + GenerateUsername(userEmailAddress) + ",\n\nThank you for ordering on our eCommerce website!";
+            string body = "Dear " + GenerateUsername(userEmailAddress) + ",\n\nThank you for ordering on our eCinema website!";
             SendEmail(toAddress, subject, body);
 
             return View("OrderCompleted");

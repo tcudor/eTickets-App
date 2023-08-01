@@ -90,8 +90,8 @@ namespace eTickets.Controllers
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
                 string toAddress = registerVM.EmailAddress;
-                string subject = "Welcome to our eCommerce website!";
-                string body = "Dear " + registerVM.FullName + ",\n\nThank you for signing up on our eCommerce website!";
+                string subject = "Welcome to our eCinema website!";
+                string body = "Dear " + registerVM.FullName + ",\n\nThank you for signing up on our eCinema website!";
                 SendEmail(toAddress, subject, body);
                 
             }
